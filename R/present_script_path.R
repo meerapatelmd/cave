@@ -7,4 +7,3 @@ present_script_path <-
         return(rstudioapi::getSourceEditorContext()$path)
     }
 
-
