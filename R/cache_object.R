@@ -2,7 +2,6 @@
 #' @description This function uses the R.cache package, but creates a key automatically based on the present R script and the object name. The directory for the cache also by default is in the set path with a subdirectory that matches the name of the working directory.
 #' @param object object to cache.
 #' @importFrom R.cache saveCache
-#' @importFrom secretary typewrite_bold
 #' @export
 
 cache_object <-
