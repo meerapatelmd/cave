@@ -7,6 +7,7 @@
 load_cached_object <-
     function(object_name) {
         key <- use_cache_key(object_name = object_name)
+        print(key)
         x <- R.cache::loadCache(key=key,
                                 dirs = strip_fn(getwd()),
                                 onError="error")

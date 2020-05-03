@@ -7,6 +7,7 @@
 cache_object <-
     function(object) {
         key <- cut_cache_key(object = object)
+        print(key)
         dirs <- strip_fn(getwd())
         x <- R.cache::saveCache(object = object,
                            key = key,
