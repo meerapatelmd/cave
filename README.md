@@ -1,6 +1,23 @@
 2020-04-28 17:16:58 	File Created
 
 # Typewrite Messages
+Timestamp:	2020-05-02 23:15:52
+Local R Script:	~/GitHub/Public-Packages/cave/R/load_cached_object.R
+Typewrite Message:	No deleted files in this repo.
+Timestamp:	2020-05-02 23:15:52
+Local R Script:	~/GitHub/Public-Packages/cave/R/load_cached_object.R
+Typewrite Message:	No untracked files in this repo.
+
+Timestamp:	2020-05-02 23:06:27
+Local R Script:	~/GitHub/Public-Packages/cave/R/load_cached_object.R
+Typewrite Message:	Object cached to /Users/patelm9/Library/Caches/R/R.cache/cave/7f6e1dbea8aabc368338ba707d0a0e59.Rcache.
+Timestamp:	2020-05-02 22:59:23
+Local R Script:	~/GitHub/Public-Packages/cave/R/cache_object.R
+Typewrite Message:	No deleted files in this repo.
+Timestamp:	2020-05-02 22:59:23
+Local R Script:	~/GitHub/Public-Packages/cave/R/cache_object.R
+Typewrite Message:	No untracked files in this repo.
+
 Timestamp:	2020-05-02 22:57:49
 Local R Script:	~/GitHub/Public-Packages/cave/R/cache_object.R
 Typewrite Message:	No deleted files in this repo.
