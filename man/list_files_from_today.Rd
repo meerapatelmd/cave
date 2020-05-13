@@ -4,7 +4,7 @@
 \alias{list_files_from_today}
 \title{List files from today based on Filename}
 \usage{
-list_files_from_today()
+list_files_from_today(...)
 }
 \description{
 List files from today based on Filename

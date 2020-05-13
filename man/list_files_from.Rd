@@ -4,7 +4,7 @@
 \alias{list_files_from}
 \title{List Files From a Particular Date Based on Filename}
 \usage{
-list_files_from(date)
+list_files_from(date, ...)
 }
 \arguments{
 \item{date}{Date in "YYYY-MM-DD" format}

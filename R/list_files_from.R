@@ -6,8 +6,8 @@
 
 
 list_files_from <-
-    function(date) {
-        file_dates <- list_files_date()
+    function(date, ...) {
+        file_dates <- list_files_date(...)
         file_dates %>%
             dplyr::filter(Date == date)
     }
