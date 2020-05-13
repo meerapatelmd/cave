@@ -16,7 +16,7 @@ vector_to_string <-
         espresso <- paste0("c(", paste(vector_to_string, collapse = ", "), ")")
 
         ##For vectors where values were already quoted, the quotes are replaced with single quotes
-        expresso <- stringr::str_replace_all(expresso, "\"", "'")
+        expresso <- stringr::str_replace_all(espresso, "\"", "'")
 
         return(espresso)
 
