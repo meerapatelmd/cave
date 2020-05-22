@@ -8,7 +8,7 @@
 change_wd <-
     function(new_wd, save = TRUE) {
         new_wd <- path.expand(new_wd)
-        if (getwd() != new_wd) {
+        if (!(getwd() %in% new_wd)) {
                         if (save == TRUE) {
 
                                 assign("wd0",

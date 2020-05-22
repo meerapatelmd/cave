@@ -14,7 +14,7 @@ revert_wd <-
 
             } else {
 
-                        if (getwd() != wd0) {
+                        if (!(getwd() %in% wd0)) {
 
                                     if (save == TRUE) {
                                             assign("wd1",
