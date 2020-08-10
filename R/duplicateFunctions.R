@@ -2,7 +2,6 @@
 #' @import purrr
 #' @import readr
 #' @import stringr
-#' @import rubix
 #' @import dplyr
 #' @export
 
@@ -18,6 +17,9 @@ duplicateFunctions <-
                         purrr::map(rubix::vector_to_tibble, new_col = "functionName") %>%
                         dplyr::bind_rows(.id = "fileName") %>%
                         dplyr::mutate(fileName = stringr::str_remove_all(fileName, pattern = "[.]{1}R$")) %>%
-                        rubix::summarize_grouped_n(functionName) %>%
+                        dplyr::group_by(functionName) %>%
+                        dplyr::summarize(n = n()) %>%
+                        dplyr::arrange(n) %>%
+                        dplyr::ungroup() %>%
                         dplyr::filter(n > 1)
         }

@@ -10,7 +10,8 @@ load_cached_object <-
         if (remove_stale_cache == TRUE) {
             cache_files <- list.files(paste0(R.cache::getCachePath(), "/", strip_fn(getwd())), full.names = TRUE)
             cache_files %>%
-                rubix::map_names_set(file.mtime) %>%
+                purrr::map(file.mtime) %>%
+                purrr::set_names(cache_files) %>%
                 purrr::map(function(x) difftime(Sys.time(), x, units = "days")) %>%
                 purrr::keep(function(x) x > 180) %>%
                 names() %>%
