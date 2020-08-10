@@ -14,11 +14,13 @@
 #' @importFrom purrr map set_names
 #' @importFrom readr read_lines
 #' @importFrom stringr str_remove_all
-#' @importFrom rubix vector_to_tibble
+#' @importFrom tibble tibble
 #' @importFrom dplyr bind_rows mutate %>%
 
 FunctionFileName  <-
         function() {
+                new_col <- "functionName"
+
                 list.files("R", full.names = TRUE) %>%
                         purrr::map(readr::read_lines) %>%
                         purrr::map(function(x) grep(pattern = "<-",
@@ -26,7 +28,7 @@ FunctionFileName  <-
                                                     value = TRUE)[1]) %>%
                         purrr::map(function(x) stringr::str_remove_all(x, "[ ]{0,}[<]{1}[-]{1}[ ]{0,1}$")) %>%
                         purrr::set_names(list.files("R")) %>%
-                        purrr::map(rubix::vector_to_tibble, new_col = "functionName") %>%
+                        purrr::map(function(x) tibble::tibble(`:=`(!!new_col, x))) %>%
                         dplyr::bind_rows(.id = "fileName") %>%
                         dplyr::mutate(fileName = stringr::str_remove_all(fileName, pattern = "[.]{1}R$"))
         }
