@@ -9,3 +9,10 @@ duplicateFunctions()
 \description{
 Duplicate Functions
 }
+\seealso{
+\code{\link[purrr]{map}},\code{\link[purrr]{set_names}}
+ \code{\link[readr]{read_lines}}
+ \code{\link[stringr]{str_remove}}
+ \code{\link[rubix]{vector_to_tibble}}
+ \code{\link[dplyr]{bind}},\code{\link[dplyr]{mutate}},\code{\link[dplyr]{group_by}},\code{\link[dplyr]{summarise}},\code{\link[dplyr]{arrange}},\code{\link[dplyr]{filter}}
+}

@@ -12,3 +12,10 @@ dataframe with `fileName` and `functionName` columns
 \description{
 This function compares the name of the file in the R subdir within the working directory and with the name of the function within the file.
 }
+\seealso{
+\code{\link[purrr]{map}},\code{\link[purrr]{set_names}}
+ \code{\link[readr]{read_lines}}
+ \code{\link[stringr]{str_remove}}
+ \code{\link[rubix]{vector_to_tibble}}
+ \code{\link[dplyr]{bind}},\code{\link[dplyr]{mutate}}
+}

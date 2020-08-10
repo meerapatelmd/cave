@@ -1,11 +1,21 @@
-#' Function FileName
-#' @description This function compares the name of the file in the R subdir within the working directory and with the name of the function within the file.
-#' @return dataframe with `fileName` and `functionName` columns
-#' @import purrr
-#' @import dplyr
-#' @import stringr
-#' @import readr
+#' @title Function FileName
+#' @description
+#' This function compares the name of the file in the R subdir within the working directory and with the name of the function within the file.
+#' @return
+#' dataframe with `fileName` and `functionName` columns
+#' @seealso
+#'  \code{\link[purrr]{map}},\code{\link[purrr]{set_names}}
+#'  \code{\link[readr]{read_lines}}
+#'  \code{\link[stringr]{str_remove}}
+#'  \code{\link[rubix]{vector_to_tibble}}
+#'  \code{\link[dplyr]{bind}},\code{\link[dplyr]{mutate}}
+#' @rdname FunctionFileName
 #' @export
+#' @importFrom purrr map set_names
+#' @importFrom readr read_lines
+#' @importFrom stringr str_remove_all
+#' @importFrom rubix vector_to_tibble
+#' @importFrom dplyr bind_rows mutate %>%
 
 FunctionFileName  <-
         function() {
