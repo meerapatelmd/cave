@@ -8,6 +8,14 @@ createLogo(sourceImg, package, file, white_around_sticker = TRUE, ...)
 
 createLogo(sourceImg, package, file, white_around_sticker = TRUE, ...)
 }
+\arguments{
+\item{package}{package name}
+
+\item{white_around_sticker}{default to FALSE. If set to TRUE, it puts
+white triangles in the corners}
+
+\item{...}{additional parameter to geom_pkgname}
+}
 \description{
 Create Package Logo
 

@@ -1,5 +1,6 @@
 #' Create Package Logo
 #' @importFrom hexSticker sticker
+#' @inheritParams hexSticker::sticker
 #' @export
 
 
