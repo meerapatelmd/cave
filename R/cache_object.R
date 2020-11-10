@@ -6,6 +6,7 @@
 
 cache_object <-
     function(object) {
+        .Deprecated()
         object_name <- deparse(substitute(object))
         key <- use_cache_key(object_name = object_name)
 
