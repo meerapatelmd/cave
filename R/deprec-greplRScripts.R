@@ -7,6 +7,8 @@
 greplRScripts <-
     function(pattern) {
 
+        .Deprecated(new = "grepl_r_dir")
+
         FILES <- list.files(path = "R", pattern = "[.]R$", full.names = TRUE)
 
         output <- vector()

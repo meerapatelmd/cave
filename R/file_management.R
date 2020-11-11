@@ -97,3 +97,125 @@ combine_text_files <-
 
 
         }
+
+
+#' @title
+#' Find Files with Text that Matches a Pattern
+#'
+#' @description
+#' Find files in a path that contains text that matches a pattern. The files in the given path can also be optionally subset based on a pattern of its own before the files are read into the caller environment, useful feature for cases where the path contains a mix of different file types and only text files need to be read.
+#'
+#' @inheritParams base::grepl
+#' @inheritParams base::list.files
+#'
+#' @rdname grepl_text_files
+#'
+#' @export
+
+
+grepl_text_files <-
+        function(
+                path = ".",
+                file_pattern = NULL,
+                all.files = FALSE,
+                recursive = FALSE,
+                text_pattern,
+                ignore.case = TRUE,
+                perl = FALSE,
+                fixed = FALSE,
+                useBytes = FALSE
+        ) {
+
+                # Immutable list.files() args
+                full.names <- TRUE
+                include.dirs <- FALSE
+
+
+                # Immutable grepl() args
+                value      <- TRUE
+
+
+                files <-
+                        list.files(
+                                path = path,
+                                pattern = file_pattern,
+                                all.files = all.files,
+                                full.names = full.names,
+                                recursive = recursive,
+                                ignore.case = ignore.case,
+                                include.dirs = include.dirs
+                        )
+
+
+                output <- vector()
+
+                for (file in files) {
+
+                        input <-
+                                readLines(con = file)
+
+
+                        if (any(grepl(pattern = text_pattern,
+                                  x = input,
+                                  ignore.case = ignore.case,
+                                  perl = perl,
+                                  fixed = fixed,
+                                  useBytes = useBytes))) {
+
+
+
+                                output <-
+                                        c(output,
+                                          file)
+
+                        }
+
+
+
+
+                }
+
+
+                output
+
+        }
+
+
+
+#' @title
+#' Find R Directory Files that Match a Pattern
+#'
+#' @description
+#' Convenience wrapper around `grepl_text_files()` for an R directory within the current working directory from which the function is being called.
+#'
+#' @rdname grepl_r_dir
+#' @export
+
+
+grepl_r_dir <-
+        function(recursive = FALSE,
+                 text_pattern,
+                 ignore.case = TRUE,
+                 perl = FALSE,
+                 fixed = FALSE,
+                 useBytes = FALSE) {
+
+
+                        path <- "R"
+                        file_pattern <- "[.]{1}R$"
+
+
+                        grepl_text_files(path = path,
+                                         file_pattern = file_pattern,
+                                         recursive = recursive,
+                                         text_pattern = text_pattern,
+                                         ignore.case = ignore.case,
+                                         perl = perl,
+                                         fixed = fixed,
+                                         useBytes = useBytes)
+
+
+
+
+
+        }
