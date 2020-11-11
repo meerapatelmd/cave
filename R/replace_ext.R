@@ -8,6 +8,7 @@ replace_ext <-
     function(original_fn,
              replace_ext) {
 
+            .Deprecated("swap_ext")
 
                 paste0(
                 stringr::str_replace_all(original_fn,
