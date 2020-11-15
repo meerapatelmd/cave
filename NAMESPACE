@@ -2,6 +2,8 @@
 
 export("%>%")
 export(FunctionFileName)
+export(add_deprecated_call)
+export(add_deprecated_to_desc)
 export(append_ext)
 export(cache_object)
 export(change_wd)

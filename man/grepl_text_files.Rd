@@ -21,12 +21,10 @@ grepl_text_files(
     corresponds to the working directory, \code{\link[base]{getwd}()}.  Tilde
     expansion (see \code{\link[base]{path.expand}}) is performed.  Missing
     values will be ignored.  Elements with a marked encoding will
-    be converted to the native encoding (and if that fails, considered
-    non-existent).}
+    be converted to the native encoding.}
 
 \item{all.files}{a logical value.  If \code{FALSE}, only the
-    names of visible files are returned (following Unix-style visibility,
-    that is files whose name does not start with a dot).  If \code{TRUE},
+    names of visible files are returned.  If \code{TRUE},
     all file names will be returned.}
 
 \item{recursive}{logical.  Should the listing recurse into directories?}
