@@ -1,3 +1,96 @@
+#' Find R Scripts with a Pattern
+#' @description This function identifies R scripts in the R subdirectory in the working directory that contains the pattern given as the argument.
+#' @param pattern pattern passed as the pattern argument in the grepl function
+#' @importFrom readr read_file
+#' @export
+
+greplRScripts <-
+    function(pattern) {
+
+        .Deprecated(new = "grepl_r_dir")
+
+        FILES <- list.files(path = "R", pattern = "[.]R$", full.names = TRUE)
+
+        output <- vector()
+
+        for (FILE in FILES) {
+
+            input <- readr::read_file(FILE)
+
+            if (grepl(pattern = pattern, input)) {
+
+                output <-
+                        unique(c(output,
+                          FILE))
+            }
+
+        }
+
+        return(output)
+
+    }
+
+
+
+
+
+#' Filesize in GB
+#' @param full_fn vector of full file paths
+#' @export
+
+size_in_gb <-
+  function(full_fns) {
+              return((file.size(full_fns))/1e9)
+  }
+
+
+
+
+
+#' Filesize in GB
+#' @param full_fn vector of full file paths
+#' @export
+
+size_in_gigabytes <-
+  function(full_fns) {
+              return((file.size(full_fns))/1e9)
+  }
+
+
+
+
+
+#' Filesize in GB
+#' @param full_fn vector of full file paths
+#' @export
+
+size_in_kb <-
+  function(full_fns) {
+              return((file.size(full_fns))/1e3)
+  }
+
+
+
+
+
+#' Filesize in GB
+#' @param full_fn vector of full file paths
+#' @export
+
+size_in_mb <-
+  function(full_fns) {
+              return((file.size(full_fns))/1e6)
+  }
+
+
+
+
+
+
+
+
+
+
 #' Set a new wd while saving the previous one
 #' @description On the condition that the new_wd is not the same as the current wd, this function sets a new working directory while saving the previous wd as a `wd0` object. If the condition is not met, no new wd is set and a `wd0` object will not be returned to the global environment.
 #' @importFrom secretary typewrite
@@ -72,6 +165,11 @@ revert_wd <-
 
             }
         }
+
+
+
+
+
 
 
 
