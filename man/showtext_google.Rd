@@ -32,7 +32,7 @@ are retrieved from the Google Fonts API.}
 \item{handle}{a curl handle object passed to \code{curl::curl_download()}.}
 }
 \description{
-This function adds a Google Font from \href{https://fonts.google.com/} and activates the showtext package functionality. This function is particularly useful for using Google Fonts for \code{\link[createLogo]}{createLogo}.
+This function adds a Google Font from \href{https://fonts.google.com/} and activates the showtext package functionality. This function is particularly useful for using Google Fonts for \code{\link{[createLogo]createLogo}}.
 }
 \seealso{
 \code{\link[curl]{handle}}

@@ -1,6 +1,6 @@
 #' @title Use Google Font
 #' @description
-#' This function adds a Google Font from \href{https://fonts.google.com/} and activates the showtext package functionality. This function is particularly useful for using Google Fonts for \code{\link[createLogo]}{createLogo}.
+#' This function adds a Google Font from \href{https://fonts.google.com/} and activates the showtext package functionality. This function is particularly useful for using Google Fonts for \code{\link{[createLogo]createLogo}}.
 #'
 #' @inheritParams sysfonts::font_add_google
 #' @seealso

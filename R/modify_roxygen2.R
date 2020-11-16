@@ -6,7 +6,6 @@
 #' @example inst/example/add_deprecated_call.R
 #' @param text Character vector containing function declarations.
 #' @param new  (Optional) Argument passed to the new call to `.Deprecated()`.
-#' @param package PARAM_DESCRIPTION, Default: NULL
 #' @seealso
 #'  \code{\link[stringr]{str_replace}}
 #' @rdname add_deprecated_call
@@ -52,6 +51,7 @@ add_deprecated_call <-
 #' @seealso
 #'  \code{\link[stringr]{str_replace}}
 #' @rdname add_deprecated_to_desc
+#' @family modify roxygen2 documentation functions
 #' @export
 #' @importFrom stringr str_replace_all
 
