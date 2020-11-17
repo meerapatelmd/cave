@@ -100,6 +100,62 @@ combine_text_files <-
 
 
 #' @title
+#' Append Text in One File to Another
+#'
+#' @description
+#' Aggregate text from multiple files into an existing text file with the option to delete the originating file.
+#'
+#' @export
+
+
+move_text_to <-
+        function(to,
+                 ...,
+                 remove_files = FALSE,
+                 separator = "\n\n\n\n\n") {
+
+                stopifnot(file.exists(to))
+
+                cat(separator,
+                    file = to,
+                    append = TRUE)
+
+                files <- rlang::list2(...)
+
+
+                for (i in seq_along(files)) {
+
+                        file <- files[i]
+                        output <- readLines(
+                                con = file,
+                                warn = FALSE
+                        )
+
+                        cat(output,
+                            file = output_file,
+                            sep = "\n",
+                            append = TRUE)
+
+                        cat(separator,
+                            file = output_file,
+                            append = TRUE)
+
+                        if (remove_files) {
+
+                                file.remove(file)
+
+                        }
+
+                }
+
+
+        }
+
+
+
+
+
+#' @title
 #' Find Files with Text that Matches a Pattern
 #'
 #' @description
@@ -215,7 +271,10 @@ grepl_r_dir <-
                                          useBytes = useBytes)
 
 
-
-
-
         }
+
+
+
+
+
+
