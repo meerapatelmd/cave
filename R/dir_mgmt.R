@@ -202,4 +202,26 @@ list.files_only <-
                                         recursive = recursive)
                 dir_files[!(dir_files %in% subdirs)]
 
-}
+        }
+
+#' @title
+#' Copy a Folder
+#' @param path_to_dir path to the folder to copy
+#' @param destination_path path copied to. If the path does not exist, it will be created using `dir.create_path()`.
+#'
+#' @rdname copy_dir
+#' @family directory management functions
+#' @example inst/example/dir_mgmt.R
+#' @export
+
+copy_dir <-
+        function(path_to_dir, destination_path) {
+
+                new_path <- file.path(destination_path)
+                new_path <- path.expand(new_path)
+
+                dir.create_path(dir = new_path)
+                file.copy(path_to_dir,
+                          to = new_path,
+                          recursive = TRUE)
+        }
