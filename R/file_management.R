@@ -120,8 +120,7 @@ move_text_to <-
                     file = to,
                     append = TRUE)
 
-                files <- rlang::list2(...)
-
+                files <- unlist(rlang::list2(...))
 
                 for (i in seq_along(files)) {
 
@@ -132,12 +131,12 @@ move_text_to <-
                         )
 
                         cat(output,
-                            file = output_file,
+                            file = to,
                             sep = "\n",
                             append = TRUE)
 
                         cat(separator,
-                            file = output_file,
+                            file = to,
                             append = TRUE)
 
                         if (remove_files) {
