@@ -10,5 +10,5 @@ greplRScripts(pattern)
 \item{pattern}{pattern passed as the pattern argument in the grepl function}
 }
 \description{
-This function identifies R scripts in the R subdirectory in the working directory that contains the pattern given as the argument.
+Deprecated. This function identifies R scripts in the R subdirectory in the working directory that contains the pattern given as the argument.
 }

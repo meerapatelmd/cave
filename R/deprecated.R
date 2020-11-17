@@ -1,5 +1,5 @@
 #' Find R Scripts with a Pattern
-#' @description This function identifies R scripts in the R subdirectory in the working directory that contains the pattern given as the argument.
+#' @description Deprecated. This function identifies R scripts in the R subdirectory in the working directory that contains the pattern given as the argument.
 #' @param pattern pattern passed as the pattern argument in the grepl function
 #' @importFrom readr read_file
 #' @export
@@ -40,6 +40,7 @@ greplRScripts <-
 
 size_in_gb <-
   function(full_fns) {
+              .Deprecated()
               return((file.size(full_fns))/1e9)
   }
 
@@ -53,6 +54,7 @@ size_in_gb <-
 
 size_in_gigabytes <-
   function(full_fns) {
+    .Deprecated()
               return((file.size(full_fns))/1e9)
   }
 
@@ -66,6 +68,7 @@ size_in_gigabytes <-
 
 size_in_kb <-
   function(full_fns) {
+    .Deprecated()
               return((file.size(full_fns))/1e3)
   }
 
@@ -79,6 +82,7 @@ size_in_kb <-
 
 size_in_mb <-
   function(full_fns) {
+    .Deprecated()
               return((file.size(full_fns))/1e6)
   }
 
@@ -99,6 +103,7 @@ size_in_mb <-
 
 change_wd <-
     function(new_wd, save = TRUE) {
+      .Deprecated()
         new_wd <- path.expand(new_wd)
         if (!(getwd() %in% new_wd)) {
                         if (save == TRUE) {
@@ -133,6 +138,7 @@ change_wd <-
 
 revert_wd <-
         function(save = TRUE) {
+          .Deprecated()
             if (!exists("wd0", envir = globalenv())) {
 
                     secretary::typewrite_error("No",
@@ -164,6 +170,51 @@ revert_wd <-
                         }
 
             }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#' Creates folder in working dir if doesn't exist
+#' @param folder_name name of the directory
+#' @export
+#'
+create_dir_if_not_exist <-
+        function(folder_name) {
+                .Deprecated()
+                if (!(dir.exists(folder_name))) {
+                        dir.create(folder_name)
+                }
+        }
+
+
+
+
+
+#' Removes a file if it exists
+#' @export
+
+remove_files_if_exist <-
+        function(full_file_paths) {
+
+                .Deprecated(new = "file.remove_if_exists")
+                for (i in 1:length(full_file_paths)) {
+                        full_file_path <- full_file_paths[i]
+                        if (file.exists(full_file_path)) {
+                                file.remove(full_file_path)
+                        }
+                }
         }
 
 
