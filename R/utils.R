@@ -25,13 +25,9 @@ function (x, split, type = "remove", perl = FALSE, ...)
 
 #' @noRd
 
-.read_file <-
-        function (path)
-        {
+no_blank <-
+        function(vector) {
 
-                readLines(path) %>%
-                        paste(collapse = "\n")
-
+                vector[!(vector %in% c(""))]
         }
-
 

@@ -4,6 +4,7 @@
 #'
 create_dir_if_not_exist <-
         function(folder_name) {
+                .Deprecated()
                 if (!(dir.exists(folder_name))) {
                         dir.create(folder_name)
                 }

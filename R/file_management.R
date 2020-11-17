@@ -276,5 +276,33 @@ grepl_r_dir <-
 
 
 
+#' @title
+#' Delete if the File Exists
+#'
+#' @description
+#' Avoid throwing an error if a call to `file.remove()` is to a file does not exist by adding a conditional statement. A message is returned in the console for each file to confirm deletion or if the file was not found.
+#'
+#' @export
 
 
+file.remove_if_exists <-
+        function(...) {
+
+                files <- rlang::list2(...)
+
+                for (i in 1:seq_along(files)) {
+
+                        if (file.exists(files[i])) {
+
+                                file.remove(files[i])
+
+                                message(sprintf("'%s' removed", files[i]))
+
+                        } else {
+
+                                message(sprintf("'%s' not found", files[i]))
+                        }
+
+                }
+
+        }
