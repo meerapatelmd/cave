@@ -4,24 +4,24 @@
 #' @export
 
 strip_fn <-
-        function(full_fn, rm_ext = TRUE, upto_nchar_file_ext = 4, rm_path = TRUE) {
+  function(full_fn, rm_ext = TRUE, upto_nchar_file_ext = 4, rm_path = TRUE) {
+    .Deprecated("skin_file")
 
-                .Deprecated("skin_file")
+    x <- full_fn
+    if (rm_ext == TRUE) {
+      x <- str_remove(full_fn, paste0(
+        "[.]{1}[a-zA-Z]{1,",
+        upto_nchar_file_ext,
+        "}$"
+      ))
+    }
 
-                x <- full_fn
-                if (rm_ext == TRUE) {
-                        x <- str_remove(full_fn, paste0("[.]{1}[a-zA-Z]{1,",
-                                                        upto_nchar_file_ext,
-                                                        "}$")
-                        )
-                }
+    if (rm_path == TRUE) {
+      x <- basename(x)
+    }
 
-                if (rm_path == TRUE) {
-                        x <- basename(x)
-                }
-
-                return(x)
-        }
+    return(x)
+  }
 
 
 #' @title
@@ -34,26 +34,21 @@ strip_fn <-
 
 
 skin_file <-
-        function(file,
-                 rm_path = TRUE,
-                 rm_ext = TRUE) {
+  function(file,
+           rm_path = TRUE,
+           rm_ext = TRUE) {
+    if (rm_path) {
+      file <- basename(file)
+    }
 
+    if (rm_ext) {
+      file <-
+        sub(
+          pattern = "(^.*)([.]{1}.*$)",
+          replacement = "\\1",
+          x = file
+        )
+    }
 
-                if (rm_path) {
-
-                        file <- basename(file)
-
-                }
-
-                if (rm_ext) {
-
-                        file <-
-                                sub(pattern = "(^.*)([.]{1}.*$)",
-                                    replacement = "\\1",
-                                    x = file)
-
-                }
-
-                file
-
-        }
+    file
+  }

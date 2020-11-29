@@ -1,7 +1,7 @@
 #' Return vector of installed packages
-#'@export
+#' @export
 #'
 see_installed_packages <-
-        function() {
-                return(installed.packages()[,"Package"])
-        }
+  function() {
+    return(installed.packages()[, "Package"])
+  }

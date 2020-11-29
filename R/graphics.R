@@ -5,20 +5,18 @@
 
 
 createLogo <-
-        function(sourceImg,
-                 package,
-                 file,
-                 white_around_sticker = TRUE,
-                 ...) {
-
-
-                hexSticker::sticker(sourceImg,
-                                    package=package,
-                                    filename = file,
-                                    white_around_sticker = white_around_sticker,
-                                    ...)
-
-        }
+  function(sourceImg,
+           package,
+           file,
+           white_around_sticker = TRUE,
+           ...) {
+    hexSticker::sticker(sourceImg,
+      package = package,
+      filename = file,
+      white_around_sticker = white_around_sticker,
+      ...
+    )
+  }
 
 
 
@@ -30,20 +28,18 @@ createLogo <-
 
 
 createLogo <-
-        function(sourceImg,
-                 package,
-                 file,
-                 white_around_sticker = TRUE,
-                 ...) {
-
-
-                hexSticker::sticker(sourceImg,
-                                    package=package,
-                                    filename = file,
-                                    white_around_sticker = white_around_sticker,
-                                    ...)
-
-        }
+  function(sourceImg,
+           package,
+           file,
+           white_around_sticker = TRUE,
+           ...) {
+    hexSticker::sticker(sourceImg,
+      package = package,
+      filename = file,
+      white_around_sticker = white_around_sticker,
+      ...
+    )
+  }
 
 
 
@@ -56,21 +52,17 @@ createLogo <-
 #' @export
 
 makeFavicons <-
-        function() {
-                pkgdown::build_favicons()
-                create_dir_if_not_exist("man")
-                create_dir_if_not_exist("man/figures")
+  function() {
+    pkgdown::build_favicons()
+    create_dir_if_not_exist("man")
+    create_dir_if_not_exist("man/figures")
 
-                filesToCopy <- list.files("pkgdown/favicon", full.names = TRUE)
-                newFiles <- paste0("man/figures/", basename(filesToCopy))
-                invisible(
-                mapply(file.copy,
-                       from = filesToCopy,
-                       to = newFiles))
-        }
-
-
-
-
-
-
+    filesToCopy <- list.files("pkgdown/favicon", full.names = TRUE)
+    newFiles <- paste0("man/figures/", basename(filesToCopy))
+    invisible(
+      mapply(file.copy,
+        from = filesToCopy,
+        to = newFiles
+      )
+    )
+  }

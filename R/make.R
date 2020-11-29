@@ -4,10 +4,10 @@
 
 
 string_to_vector <-
-    function(string) {
-        parsed_expr <- rlang::parse_expr(string)
-        return(eval(parsed_expr))
-    }
+  function(string) {
+    parsed_expr <- rlang::parse_expr(string)
+    return(eval(parsed_expr))
+  }
 
 
 
@@ -21,23 +21,17 @@ string_to_vector <-
 
 
 vector_to_string <-
-    function(vector_to_string) {
-        vector_to_string <- as.character(vector_to_string)
+  function(vector_to_string) {
+    vector_to_string <- as.character(vector_to_string)
 
-        #Enquoting the strings
-        vector_to_string <- paste0("'", vector_to_string, "'")
+    # Enquoting the strings
+    vector_to_string <- paste0("'", vector_to_string, "'")
 
-        #Adding commas and bordering with c()
-        espresso <- paste0("c(", paste(vector_to_string, collapse = ", "), ")")
+    # Adding commas and bordering with c()
+    espresso <- paste0("c(", paste(vector_to_string, collapse = ", "), ")")
 
-        ##For vectors where values were already quoted, the quotes are replaced with single quotes
-        expresso <- stringr::str_replace_all(espresso, "\"", "'")
+    ## For vectors where values were already quoted, the quotes are replaced with single quotes
+    expresso <- stringr::str_replace_all(espresso, "\"", "'")
 
-        return(espresso)
-
-    }
-
-
-
-
-
+    return(espresso)
+  }

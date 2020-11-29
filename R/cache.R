@@ -5,20 +5,22 @@
 #' @export
 
 cache_object <-
-    function(object) {
-        .Deprecated()
-        object_name <- deparse(substitute(object))
-        key <- use_cache_key(object_name = object_name)
+  function(object) {
+    .Deprecated()
+    object_name <- deparse(substitute(object))
+    key <- use_cache_key(object_name = object_name)
 
-        print(key)
+    print(key)
 
-        dirs <- strip_fn(getwd())
-        x <- R.cache::saveCache(object = object,
-                           key = key,
-                           dirs = dirs)
+    dirs <- strip_fn(getwd())
+    x <- R.cache::saveCache(
+      object = object,
+      key = key,
+      dirs = dirs
+    )
 
-        secretary::typewrite_bold("Object cached to", x, ".")
-    }
+    secretary::typewrite_bold("Object cached to", x, ".")
+  }
 
 
 
@@ -32,11 +34,14 @@ cache_object <-
 #' @export
 
 cut_cache_key <-
-    function(object) {
-        return(
-        list(script_path = present_script_path(),
-             object_name = deparse(substitute(object))))
-    }
+  function(object) {
+    return(
+      list(
+        script_path = present_script_path(),
+        object_name = deparse(substitute(object))
+      )
+    )
+  }
 
 
 
@@ -58,31 +63,33 @@ cut_cache_key <-
 #' @importFrom secretary typewrite_bold
 
 load_cached_object <-
-    function(object_name, remove_stale_cache = TRUE) {
-        if (remove_stale_cache == TRUE) {
-            cache_files <- list.files(paste0(R.cache::getCachePath(), "/", strip_fn(getwd())), full.names = TRUE)
-            cache_files %>%
-                purrr::map(file.mtime) %>%
-                purrr::set_names(cache_files) %>%
-                purrr::map(function(x) difftime(Sys.time(), x, units = "days")) %>%
-                purrr::keep(function(x) x > 180) %>%
-                names() %>%
-                file.remove()
-        }
-
-        key <- use_cache_key(object_name = object_name)
-        print(key)
-        x <- R.cache::loadCache(key=key,
-                                dirs = strip_fn(getwd()),
-                                onError="error")
-        if (!is.null(x)) {
-            secretary::typewrite_bold("Cache loaded")
-            return(x)
-        } else {
-            secretary::typewrite_bold("Cache does not exist for this object based on the present script path, working directory, and object name.")
-            return(x)
-        }
+  function(object_name, remove_stale_cache = TRUE) {
+    if (remove_stale_cache == TRUE) {
+      cache_files <- list.files(paste0(R.cache::getCachePath(), "/", strip_fn(getwd())), full.names = TRUE)
+      cache_files %>%
+        purrr::map(file.mtime) %>%
+        purrr::set_names(cache_files) %>%
+        purrr::map(function(x) difftime(Sys.time(), x, units = "days")) %>%
+        purrr::keep(function(x) x > 180) %>%
+        names() %>%
+        file.remove()
     }
+
+    key <- use_cache_key(object_name = object_name)
+    print(key)
+    x <- R.cache::loadCache(
+      key = key,
+      dirs = strip_fn(getwd()),
+      onError = "error"
+    )
+    if (!is.null(x)) {
+      secretary::typewrite_bold("Cache loaded")
+      return(x)
+    } else {
+      secretary::typewrite_bold("Cache does not exist for this object based on the present script path, working directory, and object name.")
+      return(x)
+    }
+  }
 
 
 
@@ -93,14 +100,11 @@ load_cached_object <-
 #' @export
 
 use_cache_key <-
-    function(object_name) {
-        return(
-        list(script_path = present_script_path(),
-             object_name = object_name)
-        )
-    }
-
-
-
-
-
+  function(object_name) {
+    return(
+      list(
+        script_path = present_script_path(),
+        object_name = object_name
+      )
+    )
+  }

@@ -16,87 +16,82 @@
 #' @export
 
 combine_text_files <-
-        function(path = ".",
-                 pattern,
-                 output_file,
-                 separator = "\n\n\n\n\n",
-                 remove_files = FALSE,
-                 all.files = FALSE,
-                 recursive = FALSE,
-                 ignore.case = FALSE,
-                 include.dirs = FALSE,
-                 no.. = FALSE)  {
+  function(path = ".",
+           pattern,
+           output_file,
+           separator = "\n\n\n\n\n",
+           remove_files = FALSE,
+           all.files = FALSE,
+           recursive = FALSE,
+           ignore.case = FALSE,
+           include.dirs = FALSE,
+           no.. = FALSE) {
+    if (missing(output_file)) {
+      stop("`output_file` argument is missing")
+    }
 
-                if (missing(output_file)) {
+    if (file.exists(output_file)) {
+      stop(sprintf(
+        "output_file '%s' already exists",
+        output_file
+      ),
+      call. = FALSE
+      )
+    }
 
-                        stop("`output_file` argument is missing")
+    full.names <- TRUE
 
-                }
+    files <-
+      list.files(
+        path = path,
+        pattern = pattern,
+        all.files = all.files,
+        full.names = full.names,
+        recursive = recursive,
+        ignore.case = ignore.case,
+        include.dirs = include.dirs,
+        no.. = no..
+      )
 
-                if (file.exists(output_file)) {
-
-                        stop(sprintf("output_file '%s' already exists",
-                                     output_file),
-                             call. = FALSE)
-
-                }
-
-                full.names <- TRUE
-
-                files <-
-                        list.files(
-                                path = path,
-                                pattern = pattern,
-                                all.files = all.files,
-                                full.names = full.names,
-                                recursive = recursive,
-                                ignore.case = ignore.case,
-                                include.dirs = include.dirs,
-                                no.. = no..
-                        )
-
-                if (length(files) == 0) {
-
-                        stop(sprintf("no files found that match pattern '%s' in path '%s'.",
-                                     pattern,
-                                     path))
-
-                }
+    if (length(files) == 0) {
+      stop(sprintf(
+        "no files found that match pattern '%s' in path '%s'.",
+        pattern,
+        path
+      ))
+    }
 
 
 
-                cat("",
-                    file = output_file,
-                    append = FALSE)
+    cat("",
+      file = output_file,
+      append = FALSE
+    )
 
 
-                for (i in seq_along(files)) {
+    for (i in seq_along(files)) {
+      file <- files[i]
+      output <- readLines(
+        con = file,
+        warn = FALSE
+      )
 
-                        file <- files[i]
-                        output <- readLines(
-                                        con = file,
-                                        warn = FALSE
-                                        )
+      cat(output,
+        file = output_file,
+        sep = "\n",
+        append = TRUE
+      )
 
-                        cat(output,
-                            file = output_file,
-                            sep = "\n",
-                            append = TRUE)
+      cat(separator,
+        file = output_file,
+        append = TRUE
+      )
 
-                        cat(separator,
-                            file = output_file,
-                            append = TRUE)
-
-                        if (remove_files) {
-
-                                file.remove(file)
-
-                        }
-
-                }
-
-
-        }
+      if (remove_files) {
+        file.remove(file)
+      }
+    }
+  }
 
 
 #' @title
@@ -109,46 +104,42 @@ combine_text_files <-
 
 
 move_text_to <-
-        function(to,
-                 ...,
-                 remove_files = FALSE,
-                 separator = "\n\n\n\n\n") {
+  function(to,
+           ...,
+           remove_files = FALSE,
+           separator = "\n\n\n\n\n") {
+    stopifnot(file.exists(to))
 
-                stopifnot(file.exists(to))
+    cat(separator,
+      file = to,
+      append = TRUE
+    )
 
-                cat(separator,
-                    file = to,
-                    append = TRUE)
+    files <- unlist(rlang::list2(...))
 
-                files <- unlist(rlang::list2(...))
+    for (i in seq_along(files)) {
+      file <- files[i]
+      output <- readLines(
+        con = file,
+        warn = FALSE
+      )
 
-                for (i in seq_along(files)) {
+      cat(output,
+        file = to,
+        sep = "\n",
+        append = TRUE
+      )
 
-                        file <- files[i]
-                        output <- readLines(
-                                con = file,
-                                warn = FALSE
-                        )
+      cat(separator,
+        file = to,
+        append = TRUE
+      )
 
-                        cat(output,
-                            file = to,
-                            sep = "\n",
-                            append = TRUE)
-
-                        cat(separator,
-                            file = to,
-                            append = TRUE)
-
-                        if (remove_files) {
-
-                                file.remove(file)
-
-                        }
-
-                }
-
-
-        }
+      if (remove_files) {
+        file.remove(file)
+      }
+    }
+  }
 
 
 
@@ -169,71 +160,64 @@ move_text_to <-
 
 
 grepl_text_files <-
-        function(
-                path = ".",
-                file_pattern = NULL,
-                all.files = FALSE,
-                recursive = FALSE,
-                text_pattern,
-                ignore.case = TRUE,
-                perl = FALSE,
-                fixed = FALSE,
-                useBytes = FALSE
-        ) {
+  function(
+           path = ".",
+           file_pattern = NULL,
+           all.files = FALSE,
+           recursive = FALSE,
+           text_pattern,
+           ignore.case = TRUE,
+           perl = FALSE,
+           fixed = FALSE,
+           useBytes = FALSE) {
 
-                # Immutable list.files() args
-                full.names <- TRUE
-                include.dirs <- FALSE
-
-
-                # Immutable grepl() args
-                value      <- TRUE
+    # Immutable list.files() args
+    full.names <- TRUE
+    include.dirs <- FALSE
 
 
-                files <-
-                        list.files(
-                                path = path,
-                                pattern = file_pattern,
-                                all.files = all.files,
-                                full.names = full.names,
-                                recursive = recursive,
-                                ignore.case = ignore.case,
-                                include.dirs = include.dirs
-                        )
+    # Immutable grepl() args
+    value <- TRUE
 
 
-                output <- vector()
-
-                for (file in files) {
-
-                        input <-
-                                readLines(con = file)
-
-
-                        if (any(grepl(pattern = text_pattern,
-                                  x = input,
-                                  ignore.case = ignore.case,
-                                  perl = perl,
-                                  fixed = fixed,
-                                  useBytes = useBytes))) {
+    files <-
+      list.files(
+        path = path,
+        pattern = file_pattern,
+        all.files = all.files,
+        full.names = full.names,
+        recursive = recursive,
+        ignore.case = ignore.case,
+        include.dirs = include.dirs
+      )
 
 
+    output <- vector()
 
-                                output <-
-                                        c(output,
-                                          file)
-
-                        }
-
+    for (file in files) {
+      input <-
+        readLines(con = file)
 
 
+      if (any(grepl(
+        pattern = text_pattern,
+        x = input,
+        ignore.case = ignore.case,
+        perl = perl,
+        fixed = fixed,
+        useBytes = useBytes
+      ))) {
+        output <-
+          c(
+            output,
+            file
+          )
+      }
+    }
 
-                }
 
-
-                output
-
-        }
+    output
+  }
 
 
 
@@ -248,29 +232,27 @@ grepl_text_files <-
 
 
 grepl_r_dir <-
-        function(recursive = FALSE,
-                 text_pattern,
-                 ignore.case = TRUE,
-                 perl = FALSE,
-                 fixed = FALSE,
-                 useBytes = FALSE) {
+  function(recursive = FALSE,
+           text_pattern,
+           ignore.case = TRUE,
+           perl = FALSE,
+           fixed = FALSE,
+           useBytes = FALSE) {
+    path <- "R"
+    file_pattern <- "[.]{1}R$"
 
 
-                        path <- "R"
-                        file_pattern <- "[.]{1}R$"
-
-
-                        grepl_text_files(path = path,
-                                         file_pattern = file_pattern,
-                                         recursive = recursive,
-                                         text_pattern = text_pattern,
-                                         ignore.case = ignore.case,
-                                         perl = perl,
-                                         fixed = fixed,
-                                         useBytes = useBytes)
-
-
-        }
+    grepl_text_files(
+      path = path,
+      file_pattern = file_pattern,
+      recursive = recursive,
+      text_pattern = text_pattern,
+      ignore.case = ignore.case,
+      perl = perl,
+      fixed = fixed,
+      useBytes = useBytes
+    )
+  }
 
 
 
@@ -285,23 +267,16 @@ grepl_r_dir <-
 
 
 file.remove_if_exists <-
-        function(...) {
+  function(...) {
+    files <- rlang::list2(...)
 
-                files <- rlang::list2(...)
+    for (i in 1:seq_along(files)) {
+      if (file.exists(files[i])) {
+        file.remove(files[i])
 
-                for (i in 1:seq_along(files)) {
-
-                        if (file.exists(files[i])) {
-
-                                file.remove(files[i])
-
-                                message(sprintf("'%s' removed", files[i]))
-
-                        } else {
-
-                                message(sprintf("'%s' not found", files[i]))
-                        }
-
-                }
-
-        }
+        message(sprintf("'%s' removed", files[i]))
+      } else {
+        message(sprintf("'%s' not found", files[i]))
+      }
+    }
+  }

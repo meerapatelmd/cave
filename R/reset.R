@@ -2,8 +2,6 @@
 #' @export
 
 reset <-
-    function() {
-
-        invisible(.rs.restartR())
-
-    }
+  function() {
+    invisible(.rs.restartR())
+  }

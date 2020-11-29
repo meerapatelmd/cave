@@ -5,30 +5,27 @@
 #' @export
 
 greplRScripts <-
-    function(pattern) {
+  function(pattern) {
+    .Deprecated(new = "grepl_r_dir")
 
-        .Deprecated(new = "grepl_r_dir")
+    FILES <- list.files(path = "R", pattern = "[.]R$", full.names = TRUE)
 
-        FILES <- list.files(path = "R", pattern = "[.]R$", full.names = TRUE)
+    output <- vector()
 
-        output <- vector()
+    for (FILE in FILES) {
+      input <- readr::read_file(FILE)
 
-        for (FILE in FILES) {
-
-            input <- readr::read_file(FILE)
-
-            if (grepl(pattern = pattern, input)) {
-
-                output <-
-                        unique(c(output,
-                          FILE))
-            }
-
-        }
-
-        return(output)
-
+      if (grepl(pattern = pattern, input)) {
+        output <-
+          unique(c(
+            output,
+            FILE
+          ))
+      }
     }
+
+    return(output)
+  }
 
 
 
@@ -40,8 +37,8 @@ greplRScripts <-
 
 size_in_gb <-
   function(full_fns) {
-              .Deprecated()
-              return((file.size(full_fns))/1e9)
+    .Deprecated()
+    return((file.size(full_fns)) / 1e9)
   }
 
 
@@ -55,7 +52,7 @@ size_in_gb <-
 size_in_gigabytes <-
   function(full_fns) {
     .Deprecated()
-              return((file.size(full_fns))/1e9)
+    return((file.size(full_fns)) / 1e9)
   }
 
 
@@ -69,7 +66,7 @@ size_in_gigabytes <-
 size_in_kb <-
   function(full_fns) {
     .Deprecated()
-              return((file.size(full_fns))/1e3)
+    return((file.size(full_fns)) / 1e3)
   }
 
 
@@ -83,7 +80,7 @@ size_in_kb <-
 size_in_mb <-
   function(full_fns) {
     .Deprecated()
-              return((file.size(full_fns))/1e6)
+    return((file.size(full_fns)) / 1e6)
   }
 
 
@@ -102,29 +99,24 @@ size_in_mb <-
 #' @export
 
 change_wd <-
-    function(new_wd, save = TRUE) {
-      .Deprecated()
-        new_wd <- path.expand(new_wd)
-        if (!(getwd() %in% new_wd)) {
-                        if (save == TRUE) {
+  function(new_wd, save = TRUE) {
+    .Deprecated()
+    new_wd <- path.expand(new_wd)
+    if (!(getwd() %in% new_wd)) {
+      if (save == TRUE) {
+        assign("wd0",
+          getwd(),
+          envir = globalenv()
+        )
+        secretary::typewrite(crayon::italic("wd0"), "object created.")
+      }
 
-                                assign("wd0",
-                                        getwd(),
-                                       envir = globalenv())
-                                secretary::typewrite(crayon::italic("wd0"), "object created.")
-
-                        }
-
-                        setwd(new_wd)
-                        secretary::typewrite(crayon::italic(new_wd), "set as new wd.")
-
-        } else {
-
-                        secretary::typewrite(crayon::italic(new_wd), "is current wd. No changes made.")
-
-        }
-
+      setwd(new_wd)
+      secretary::typewrite(crayon::italic(new_wd), "set as new wd.")
+    } else {
+      secretary::typewrite(crayon::italic(new_wd), "is current wd. No changes made.")
     }
+  }
 
 
 
@@ -137,40 +129,34 @@ change_wd <-
 
 
 revert_wd <-
-        function(save = TRUE) {
-          .Deprecated()
-            if (!exists("wd0", envir = globalenv())) {
-
-                    secretary::typewrite_error("No",
-                                               crayon::italic("wd0"), "object in .GlobalEnv.")
-
-
-            } else {
-
-                        if (!(getwd() %in% wd0)) {
-
-                                    if (save == TRUE) {
-                                            assign("wd1",
-                                                   getwd(),
-                                                   envir = globalenv())
-                                            secretary::typewrite(crayon::italic("wd1"), "object created.")
-                                    }
-
-                                    setwd(wd0)
-                                    secretary::typewrite(crayon::italic(wd0), "set as new wd and", crayon::italic("wd0"), "removed from .GlobalEnv.")
-
-                                    rm(wd0, envir = globalenv())
-
-                        } else {
-
-                                secretary::typewrite(crayon::italic("wd0"), "object value of", crayon::italic(wd0), "is the same as current wd. Removing",  crayon::italic("wd0"), "from .GlobalEnv.")
-
-                                rm(wd0, envir = globalenv())
-
-                        }
-
-            }
+  function(save = TRUE) {
+    .Deprecated()
+    if (!exists("wd0", envir = globalenv())) {
+      secretary::typewrite_error(
+        "No",
+        crayon::italic("wd0"), "object in .GlobalEnv."
+      )
+    } else {
+      if (!(getwd() %in% wd0)) {
+        if (save == TRUE) {
+          assign("wd1",
+            getwd(),
+            envir = globalenv()
+          )
+          secretary::typewrite(crayon::italic("wd1"), "object created.")
         }
+
+        setwd(wd0)
+        secretary::typewrite(crayon::italic(wd0), "set as new wd and", crayon::italic("wd0"), "removed from .GlobalEnv.")
+
+        rm(wd0, envir = globalenv())
+      } else {
+        secretary::typewrite(crayon::italic("wd0"), "object value of", crayon::italic(wd0), "is the same as current wd. Removing", crayon::italic("wd0"), "from .GlobalEnv.")
+
+        rm(wd0, envir = globalenv())
+      }
+    }
+  }
 
 
 
@@ -191,12 +177,12 @@ revert_wd <-
 #' @export
 #'
 create_dir_if_not_exist <-
-        function(folder_name) {
-                .Deprecated()
-                if (!(dir.exists(folder_name))) {
-                        dir.create(folder_name)
-                }
-        }
+  function(folder_name) {
+    .Deprecated()
+    if (!(dir.exists(folder_name))) {
+      dir.create(folder_name)
+    }
+  }
 
 
 
@@ -206,16 +192,15 @@ create_dir_if_not_exist <-
 #' @export
 
 remove_files_if_exist <-
-        function(full_file_paths) {
-
-                .Deprecated(new = "file.remove_if_exists")
-                for (i in 1:length(full_file_paths)) {
-                        full_file_path <- full_file_paths[i]
-                        if (file.exists(full_file_path)) {
-                                file.remove(full_file_path)
-                        }
-                }
-        }
+  function(full_file_paths) {
+    .Deprecated(new = "file.remove_if_exists")
+    for (i in 1:length(full_file_paths)) {
+      full_file_path <- full_file_paths[i]
+      if (file.exists(full_file_path)) {
+        file.remove(full_file_path)
+      }
+    }
+  }
 
 
 
@@ -258,19 +243,18 @@ remove_files_if_exist <-
 #' @export
 
 replace_ext <-
-    function(original_fn,
-             replace_ext) {
+  function(original_fn,
+           replace_ext) {
+    .Deprecated("swap_ext")
 
-            .Deprecated("swap_ext")
-
-                paste0(
-                stringr::str_replace_all(original_fn,
-                                         pattern = "(^.*)([.]{1}.*$)",
-                                         replacement = "\\1."),
-                    replace_ext)
-
-
-    }
+    paste0(
+      stringr::str_replace_all(original_fn,
+        pattern = "(^.*)([.]{1}.*$)",
+        replacement = "\\1."
+      ),
+      replace_ext
+    )
+  }
 
 
 
@@ -288,9 +272,9 @@ replace_ext <-
 
 
 script_step_number <-
-    function() {
-        return(stringr::str_replace_all(strip_fn(present_script_path()), "([0-9]{2})(.*$)", "\\1"))
-    }
+  function() {
+    return(stringr::str_replace_all(strip_fn(present_script_path()), "([0-9]{2})(.*$)", "\\1"))
+  }
 
 
 
@@ -308,37 +292,40 @@ script_step_number <-
 #' @export
 
 select_file <-
-    function(dir, new_obj_name = NULL, full_path = FALSE) {
+  function(dir, new_obj_name = NULL, full_path = FALSE) {
+    .Deprecated()
+    fns <-
+      dir %>%
+      list.files()
 
-            .Deprecated()
-            fns <-
-                    dir %>%
-                    list.files()
+    print(tibble::tibble(
+      Index = paste0("[", 1:length(fns), "]"),
+      Files = fns
+    ))
 
-            print(tibble::tibble(Index = paste0("[", 1:length(fns), "]"),
-                        Files = fns))
-
-            secretary::typewrite("Please select a file by Index.")
-            answer <- readline("Selection: ")
-            answer <- as.integer(answer)
-            if (is.null(new_obj_name)) {
-                    if (full_path == FALSE) {
-                            return(fns[answer])
-                    } else {
-                            return(paste0(dir, "/", fns[answer]))
-                    }
-            } else {
-                    if (full_path == FALSE) {
-                            assign(new_obj_name,
-                                   value = fns[answer],
-                                   envir = globalenv())
-                    } else {
-                            assign(new_obj_name,
-                                   value = paste0(dir, "/", fns[answer]),
-                                   envir = globalenv())
-                    }
-            }
+    secretary::typewrite("Please select a file by Index.")
+    answer <- readline("Selection: ")
+    answer <- as.integer(answer)
+    if (is.null(new_obj_name)) {
+      if (full_path == FALSE) {
+        return(fns[answer])
+      } else {
+        return(paste0(dir, "/", fns[answer]))
+      }
+    } else {
+      if (full_path == FALSE) {
+        assign(new_obj_name,
+          value = fns[answer],
+          envir = globalenv()
+        )
+      } else {
+        assign(new_obj_name,
+          value = paste0(dir, "/", fns[answer]),
+          envir = globalenv()
+        )
+      }
     }
+  }
 
 
 
@@ -368,23 +355,26 @@ select_file <-
 #' @importFrom tibble tibble
 #' @importFrom dplyr bind_rows mutate %>%
 
-FunctionFileName  <-
-        function() {
+FunctionFileName <-
+  function() {
+    .Deprecated()
+    new_col <- "functionName"
 
-                .Deprecated()
-                new_col <- "functionName"
-
-                list.files("R", full.names = TRUE) %>%
-                        purrr::map(readr::read_lines) %>%
-                        purrr::map(function(x) grep(pattern = "<-",
-                                                    x,
-                                                    value = TRUE)[1]) %>%
-                        purrr::map(function(x) stringr::str_remove_all(x, "[ ]{0,}[<]{1}[-]{1}[ ]{0,1}$")) %>%
-                        purrr::set_names(list.files("R")) %>%
-                        purrr::map(function(x) tibble::tibble(`:=`(!!new_col, x))) %>%
-                        dplyr::bind_rows(.id = "fileName") %>%
-                        dplyr::mutate(fileName = stringr::str_remove_all(fileName, pattern = "[.]{1}R$"))
-        }
+    list.files("R", full.names = TRUE) %>%
+      purrr::map(readr::read_lines) %>%
+      purrr::map(function(x) {
+        grep(
+          pattern = "<-",
+          x,
+          value = TRUE
+        )[1]
+      }) %>%
+      purrr::map(function(x) stringr::str_remove_all(x, "[ ]{0,}[<]{1}[-]{1}[ ]{0,1}$")) %>%
+      purrr::set_names(list.files("R")) %>%
+      purrr::map(function(x) tibble::tibble(`:=`(!!new_col, x))) %>%
+      dplyr::bind_rows(.id = "fileName") %>%
+      dplyr::mutate(fileName = stringr::str_remove_all(fileName, pattern = "[.]{1}R$"))
+  }
 
 
 
@@ -411,30 +401,28 @@ FunctionFileName  <-
 #' @importFrom dplyr bind_rows mutate group_by summarize arrange ungroup filter %>%
 
 duplicateFunctions <-
-        function() {
+  function() {
+    .Deprecated()
 
-          .Deprecated()
+    new_col <- "functionName"
 
-                new_col <- "functionName"
-
-                list.files("R", full.names = TRUE) %>%
-                        purrr::map(readr::read_lines) %>%
-                        purrr::map(function(x) grep(pattern = "<-",
-                                                    x,
-                                                    value = TRUE)[1]) %>%
-                        purrr::map(function(x) stringr::str_remove_all(x, "[ ]{0,}[<]{1}[-]{1}[ ]{0,1}$")) %>%
-                        purrr::set_names(list.files("R")) %>%
-                        purrr::map(function(x) tibble::tibble(`:=`(!!new_col, x))) %>%
-                        dplyr::bind_rows(.id = "fileName") %>%
-                        dplyr::mutate(fileName = stringr::str_remove_all(fileName, pattern = "[.]{1}R$")) %>%
-                        dplyr::group_by(functionName) %>%
-                        dplyr::summarize(n = n(), .groups = "drop") %>%
-                        dplyr::arrange(n) %>%
-                        dplyr::ungroup() %>%
-                        dplyr::filter(n > 1)
-        }
-
-
-
-
-
+    list.files("R", full.names = TRUE) %>%
+      purrr::map(readr::read_lines) %>%
+      purrr::map(function(x) {
+        grep(
+          pattern = "<-",
+          x,
+          value = TRUE
+        )[1]
+      }) %>%
+      purrr::map(function(x) stringr::str_remove_all(x, "[ ]{0,}[<]{1}[-]{1}[ ]{0,1}$")) %>%
+      purrr::set_names(list.files("R")) %>%
+      purrr::map(function(x) tibble::tibble(`:=`(!!new_col, x))) %>%
+      dplyr::bind_rows(.id = "fileName") %>%
+      dplyr::mutate(fileName = stringr::str_remove_all(fileName, pattern = "[.]{1}R$")) %>%
+      dplyr::group_by(functionName) %>%
+      dplyr::summarize(n = n(), .groups = "drop") %>%
+      dplyr::arrange(n) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(n > 1)
+  }

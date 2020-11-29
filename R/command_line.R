@@ -5,21 +5,17 @@
 #' @export
 
 cl_open_ff <-
-        function(app) {
-
-                function(file) {
-
-                        file <- normalizePath(path = file,
-                                              mustWork = TRUE)
-
-
-                        system(sprintf("open -a %s %s", app, file))
+  function(app) {
+    function(file) {
+      file <- normalizePath(
+        path = file,
+        mustWork = TRUE
+      )
 
 
-                }
-
-
-        }
+      system(sprintf("open -a %s %s", app, file))
+    }
+  }
 
 
 
@@ -28,12 +24,12 @@ cl_open_ff <-
 #' @export
 
 open_sesame <-
-        function(file) {
+  function(file) {
+    file <- normalizePath(
+      path = file,
+      mustWork = TRUE
+    )
 
-                file <- normalizePath(path = file,
-                                      mustWork = TRUE)
 
-
-                system(sprintf("open %s", file))
-
-}
+    system(sprintf("open %s", file))
+  }

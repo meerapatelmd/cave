@@ -16,32 +16,25 @@
 
 
 add_deprecated_call <-
-        function(text,
-                 new = NULL) {
-
-                if (is.null(new)) {
-
-                stringr::str_replace_all(
-                        string  = text,
-                        pattern = "(function[(]{1}.*?[)]{1}[{]{1})",
-                        replacement = "\\1\n\t\t\t.Deprecated()\n"
-
-                )
-
-                } else {
-
-                        stringr::str_replace_all(
-                                string  = text,
-                                pattern = "(function[(]{1}.*?[)]{1}[{]{1})",
-                                replacement = sprintf("\\1\n\t\t\t.Deprecated(new = '%s')\n",
-                                                      new)
-
-                        )
-
-                }
-
-
-        }
+  function(text,
+           new = NULL) {
+    if (is.null(new)) {
+      stringr::str_replace_all(
+        string = text,
+        pattern = "(function[(]{1}.*?[)]{1}[{]{1})",
+        replacement = "\\1\n\t\t\t.Deprecated()\n"
+      )
+    } else {
+      stringr::str_replace_all(
+        string = text,
+        pattern = "(function[(]{1}.*?[)]{1}[{]{1})",
+        replacement = sprintf(
+          "\\1\n\t\t\t.Deprecated(new = '%s')\n",
+          new
+        )
+      )
+    }
+  }
 
 
 #' @title
@@ -57,14 +50,10 @@ add_deprecated_call <-
 
 
 add_deprecated_to_desc <-
-        function(text) {
-
-                stringr::str_replace_all(
-                        string  = text,
-                        pattern = "(@description)",
-                        replacement = "\\1 (Deprecated)"
-
-                )
-
-        }
-
+  function(text) {
+    stringr::str_replace_all(
+      string = text,
+      pattern = "(@description)",
+      replacement = "\\1 (Deprecated)"
+    )
+  }

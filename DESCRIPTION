@@ -1,16 +1,36 @@
-Package: cave
 Type: Package
+Package: cave
 Title: Package Management Package
 Version: 1.1.0
 Author: Meera Patel, MD
 Maintainer: Meera Patel, MD <patelmeeray@gmail.com>
-Description: This package contains functions that help build and maintain R Packages and R modules.
+Description: This package contains functions that help
+    navigate file systems.  
 License: Apache License 2.0
+URL: https://meerapatelmd.github.io/cave/,
+    https://github.com/meerapatelmd/cave/
+BugReports: https://github.com/meerapatelmd/cave/issues/
+Depends: 
+    R (>= 2.10)
+Imports: 
+    crayon,
+    curl,
+    dplyr,
+    hexSticker,
+    magrittr,
+    pkgdown,
+    purrr,
+    R.cache,
+    readr,
+    rlang (>= 0.1.2),
+    rstudioapi,
+    secretary,
+    showtext,
+    stringr,
+    sysfonts,
+    tibble
+Suggests: 
+    roxygen2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Depends: 
-    R (>= 2.10) 
-Imports:     R.cache,    crayon,    curl,    dplyr,    hexSticker,    magrittr,    pkgdown,    purrr,    readr,    rstudioapi,    secretary,    showtext,    stringr,    sysfonts,    tibbleURL: https://meerapatelmd.github.io/cave/, https://github.com/meerapatelmd/cave/BugReports: https://github.com/meerapatelmd/cave/issues/
-
-

@@ -4,10 +4,10 @@
 #' @export
 
 present_script_path <-
-    function() {
-            .Deprecated("script_path")
-        return(rstudioapi::getSourceEditorContext()$path)
-    }
+  function() {
+    .Deprecated("script_path")
+    return(rstudioapi::getSourceEditorContext()$path)
+  }
 
 
 #' Script Path
@@ -15,12 +15,8 @@ present_script_path <-
 #' @export
 
 script_path <-
-        function() {
-
-                if (rstudioapi::isAvailable()) {
-
-
-                        rstudioapi::getSourceEditorContext()$path
-
-                }
-        }
+  function() {
+    if (rstudioapi::isAvailable()) {
+      rstudioapi::getSourceEditorContext()$path
+    }
+  }
