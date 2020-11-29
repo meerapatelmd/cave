@@ -18,6 +18,11 @@
 add_deprecated_call <-
   function(text,
            new = NULL) {
+
+    if (!any(grepl(pattern = ".Deprecated()",
+               x = text,
+               ignore.case = FALSE,
+               fixed = TRUE))) {
     if (is.null(new)) {
       stringr::str_replace_all(
         string = text,
@@ -33,6 +38,10 @@ add_deprecated_call <-
           new
         )
       )
+    }
+    } else {
+      cli::cli_alert_info("`.Deprecated()` already in text")
+      return(text)
     }
   }
 
@@ -51,9 +60,17 @@ add_deprecated_call <-
 
 add_deprecated_to_desc <-
   function(text) {
-    stringr::str_replace_all(
-      string = text,
-      pattern = "(@description)",
-      replacement = "\\1 (Deprecated)"
-    )
+
+    if (!any(grepl(pattern = "@description (Deprecated)",
+                   x = text,
+                   fixed = TRUE))) {
+        stringr::str_replace_all(
+          string = text,
+          pattern = "(@description)",
+          replacement = "\\1 (Deprecated)"
+        )
+    } else {
+      cli::cli_alert_info("`@description (Deprecated)` already in text")
+      return(text)
+    }
   }
