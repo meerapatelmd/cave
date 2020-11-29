@@ -2,8 +2,12 @@ Type: Package
 Package: cave
 Title: Package Management Package
 Version: 1.1.0
-Author: Meera Patel, MD
-Maintainer: Meera Patel, MD <patelmeeray@gmail.com>
+Authors@R: 
+    person(given = "Meera",
+           family = "Patel, MD",
+           role = c("aut", "cre"),
+           email = "patelmeeray@gmail.com",
+           comment = c(ORCID = "0000-0002-3401-3948"))
 Description: This package contains functions that help
     navigate file systems.  
 License: Apache License 2.0
