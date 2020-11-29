@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Append an Extension to a Filename — append_ext • cave</title>
+<title>Append Text in One File to Another — move_text_to • cave</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -39,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Append an Extension to a Filename — append_ext" />
-<meta property="og:description" content="Append an extension to an extension-less filename" />
+<meta property="og:title" content="Append Text in One File to Another — move_text_to" />
+<meta property="og:description" content="Aggregate text from multiple files into an existing text file with the option to delete the originating file." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -92,7 +100,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/meerapatelmd/cave/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -106,29 +119,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Append an Extension to a Filename</h1>
-    
-    <div class="hidden name"><code>append_ext.Rd</code></div>
+    <h1>Append Text in One File to Another</h1>
+    <small class="dont-index">Source: <a href='https://github.com/meerapatelmd/cave/blob/master/R/file_management.R'><code>R/file_management.R</code></a></small>
+    <div class="hidden name"><code>move_text_to.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Append an extension to an extension-less filename</p>
+    <p>Aggregate text from multiple files into an existing text file with the option to delete the originating file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>append_ext</span>(<span class='no'>filename</span>, <span class='no'>ext</span>)</pre>
+    <pre class="usage"><span class='fu'>move_text_to</span><span class='op'>(</span><span class='va'>to</span>, <span class='va'>...</span>, remove_files <span class='op'>=</span> <span class='cn'>FALSE</span>, separator <span class='op'>=</span> <span class='st'>"\n\n\n\n\n"</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>filename</th>
-      <td><p>Extension-less filename. For example, "IngestionFile".</p></td>
-    </tr>
-    <tr>
-      <th>ext</th>
-      <td><p>Extension to append withou the period. For example, "csv".</p></td>
-    </tr>
-    </table>
 
 
   </div>
@@ -146,7 +147,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

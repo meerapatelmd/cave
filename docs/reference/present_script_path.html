@@ -8,6 +8,13 @@
 
 <title>Get the path to the present R script — present_script_path • cave</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,7 +47,8 @@
 
 
 <meta property="og:title" content="Get the path to the present R script — present_script_path" />
-<meta property="og:description" content="This script returns the path of the R script in which it is being executed. It is helpful for documenting dataframes that have been written and README (see Readi package for implementation)." />
+<meta property="og:description" content="(Deprecated) This script returns the path of the R script in which it is being executed. It is helpful for documenting dataframes that have been written and README (see Readi package for implementation)." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -92,7 +100,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/meerapatelmd/cave/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -107,15 +120,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the path to the present R script</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/meerapatelmd/cave/blob/master/R/rstudioapi.R'><code>R/rstudioapi.R</code></a></small>
     <div class="hidden name"><code>present_script_path.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This script returns the path of the R script in which it is being executed. It is helpful for documenting dataframes that have been written and README (see Readi package for implementation).</p>
+    <p>(Deprecated) This script returns the path of the R script in which it is being executed. It is helpful for documenting dataframes that have been written and README (see Readi package for implementation).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>present_script_path</span>()</pre>
+    <pre class="usage"><span class='fu'>present_script_path</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
 
@@ -134,7 +147,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

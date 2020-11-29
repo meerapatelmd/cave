@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List Files with Date in Filename — list_files_date • cave</title>
+<title>Remove Path and Extension of a File — skin_file • cave</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -39,8 +46,9 @@
 
 
 
-<meta property="og:title" content="List Files with Date in Filename — list_files_date" />
-<meta property="og:description" content="List Files with Date in Filename" />
+<meta property="og:title" content="Remove Path and Extension of a File — skin_file" />
+<meta property="og:description" content="Remove Path and Extension of a File" />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -92,7 +100,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/meerapatelmd/cave/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -106,17 +119,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List Files with Date in Filename</h1>
-    
-    <div class="hidden name"><code>list_files_date.Rd</code></div>
+    <h1>Remove Path and Extension of a File</h1>
+    <small class="dont-index">Source: <a href='https://github.com/meerapatelmd/cave/blob/master/R/file_naming.R'><code>R/file_naming.R</code></a></small>
+    <div class="hidden name"><code>skin_file.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>List Files with Date in Filename</p>
+    <p>Remove Path and Extension of a File</p>
     </div>
 
-    <pre class="usage"><span class='fu'>list_files_date</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>skin_file</span><span class='op'>(</span><span class='va'>file</span>, rm_path <span class='op'>=</span> <span class='cn'>TRUE</span>, rm_ext <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>String</p></td>
+    </tr>
+    <tr>
+      <th>rm_path</th>
+      <td><p>Remove the path in the `file` argument?</p></td>
+    </tr>
+    <tr>
+      <th>rm_ext</th>
+      <td><p>Remove the extension in the `file` argument?</p></td>
+    </tr>
+    </table>
 
 
   </div>
@@ -134,7 +163,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

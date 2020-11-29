@@ -8,6 +8,13 @@
 
 <title>Function reference • cave</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,6 +47,7 @@
 
 
 <meta property="og:title" content="Function reference" />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -91,7 +99,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/meerapatelmd/cave/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -137,15 +150,15 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="append_ext.html">append_ext()</a></code> </p>
+          <p><code><a href="add_deprecated_call.html">add_deprecated_call()</a></code> </p>
         </td>
-        <td><p>Append an Extension to a Filename</p></td>
+        <td><p>Add `.Deprecated()` to Text</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="append_path.html">append_path()</a></code> </p>
+          <p><code><a href="add_deprecated_to_desc.html">add_deprecated_to_desc()</a></code> </p>
         </td>
-        <td><p>Append a Path to a Filename</p></td>
+        <td><p>Add "(Deprecated)" after the `@description` Roxygen2 Tag</p></td>
       </tr><tr>
         
         <td>
@@ -161,9 +174,21 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="copy_object.html">copy_object()</a></code> </p>
+          <p><code><a href="cl_open_ff.html">cl_open_ff()</a></code> </p>
         </td>
-        <td><p>Copy an R object to another R object of a different name</p></td>
+        <td><p>Open a File in a Specific Application</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="combine_text_files.html">combine_text_files()</a></code> </p>
+        </td>
+        <td><p>Combine Text File Contents into a Single File</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="copy_dir.html">copy_dir()</a></code> </p>
+        </td>
+        <td><p>Copy a Folder</p></td>
       </tr><tr>
         
         <td>
@@ -197,9 +222,39 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="dir.create_path.html">dir.create_path()</a></code> </p>
+        </td>
+        <td><p>Create the Path to a Directory</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="duplicateFunctions.html">duplicateFunctions()</a></code> </p>
         </td>
         <td><p>Duplicate Functions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="file.remove_if_exists.html">file.remove_if_exists()</a></code> </p>
+        </td>
+        <td><p>Delete if the File Exists</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_gb_size.html">get_gb_size()</a></code> </p>
+        </td>
+        <td><p>Get File Size in GB</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_kb_size.html">get_kb_size()</a></code> </p>
+        </td>
+        <td><p>Get File Size in KB</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_mb_size.html">get_mb_size()</a></code> </p>
+        </td>
+        <td><p>Get File Size in MB</p></td>
       </tr><tr>
         
         <td>
@@ -209,27 +264,27 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="list_files_date.html">list_files_date()</a></code> </p>
+          <p><code><a href="grepl_r_dir.html">grepl_r_dir()</a></code> </p>
         </td>
-        <td><p>List Files with Date in Filename</p></td>
+        <td><p>Find R Directory Files that Match a Pattern</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="list_files_from.html">list_files_from()</a></code> </p>
+          <p><code><a href="grepl_text_files.html">grepl_text_files()</a></code> </p>
         </td>
-        <td><p>List Files From a Particular Date Based on Filename</p></td>
+        <td><p>Find Files with Text that Matches a Pattern</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="list_files_from_today.html">list_files_from_today()</a></code> </p>
+          <p><code><a href="list.files_only.html">list.files_only()</a></code> </p>
         </td>
-        <td><p>List files from today based on Filename</p></td>
+        <td><p>List Files without Subdirectories</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="list_files_size.html">list_files_size()</a></code> </p>
+          <p><code><a href="list.subdirs.html">list.subdirs()</a></code> </p>
         </td>
-        <td><p>List Files with Size in MB</p></td>
+        <td><p>List Subdirectories</p></td>
       </tr><tr>
         
         <td>
@@ -239,21 +294,33 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="move_text_to.html">move_text_to()</a></code> </p>
+        </td>
+        <td><p>Append Text in One File to Another</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_sesame.html">open_sesame()</a></code> </p>
+        </td>
+        <td><p>Generic Command Line Open Command</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="present_script_path.html">present_script_path()</a></code> </p>
         </td>
         <td><p>Get the path to the present R script</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="remove_files_if_exist.html">remove_files_if_exist()</a></code> </p>
+          <p><code><a href="remove.dir.html">remove.dir()</a></code> </p>
         </td>
-        <td><p>Removes a file if it exists</p></td>
+        <td><p>Remove a Directory</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="replace_dir.html">replace_dir()</a></code> </p>
+          <p><code><a href="remove_files_if_exist.html">remove_files_if_exist()</a></code> </p>
         </td>
-        <td><p>Replace a folder</p></td>
+        <td><p>Removes a file if it exists</p></td>
       </tr><tr>
         
         <td>
@@ -272,6 +339,12 @@
           <p><code><a href="revert_wd.html">revert_wd()</a></code> </p>
         </td>
         <td><p>Revert wd back to original wd</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="rmAll.html">rmAll()</a></code> </p>
+        </td>
+        <td><p>Remove Objects from the Global Environment</p></td>
       </tr><tr>
         
         <td>
@@ -296,6 +369,12 @@
           <p><code><a href="rm_if_exists.html">rm_if_exists()</a></code> </p>
         </td>
         <td><p>Removes R objects in the global environment if R object doesn't exist</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="script_path.html">script_path()</a></code> </p>
+        </td>
+        <td><p>Script Path</p></td>
       </tr><tr>
         
         <td>
@@ -341,6 +420,18 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="skin_file.html">skin_file()</a></code> </p>
+        </td>
+        <td><p>Remove Path and Extension of a File</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="split_function_file.html">split_function_file()</a></code> </p>
+        </td>
+        <td><p>Read a Roxygen2 File Split By Function</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="string_to_vector.html">string_to_vector()</a></code> </p>
         </td>
         <td><p>Parse and evaluate a string</p></td>
@@ -362,6 +453,12 @@
           <p><code><a href="vector_to_string.html">vector_to_string()</a></code> </p>
         </td>
         <td><p>Convert a vector of values into a string</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="writeErrors.html">writeErrors()</a></code> </p>
+        </td>
+        <td><p>Write Errors to File</p></td>
       </tr>
     </tbody>
     </table>
@@ -381,7 +478,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

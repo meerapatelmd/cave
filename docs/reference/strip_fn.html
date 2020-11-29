@@ -8,6 +8,13 @@
 
 <title>Remove the file ext from fn — strip_fn • cave</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -41,6 +48,7 @@
 
 <meta property="og:title" content="Remove the file ext from fn — strip_fn" />
 <meta property="og:description" content="Remove the file ext from fn" />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -92,7 +100,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/meerapatelmd/cave/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -107,7 +120,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove the file ext from fn</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/meerapatelmd/cave/blob/master/R/file_naming.R'><code>R/file_naming.R</code></a></small>
     <div class="hidden name"><code>strip_fn.Rd</code></div>
     </div>
 
@@ -115,7 +128,7 @@
     <p>Remove the file ext from fn</p>
     </div>
 
-    <pre class="usage"><span class='fu'>strip_fn</span>(<span class='no'>full_fn</span>, <span class='kw'>rm_ext</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>upto_nchar_file_ext</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>rm_path</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>strip_fn</span><span class='op'>(</span><span class='va'>full_fn</span>, rm_ext <span class='op'>=</span> <span class='cn'>TRUE</span>, upto_nchar_file_ext <span class='op'>=</span> <span class='fl'>4</span>, rm_path <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,7 +155,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
