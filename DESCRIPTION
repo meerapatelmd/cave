@@ -33,6 +33,8 @@ Imports:
     stringr,
     sysfonts,
     tibble
+Remotes:  
+    meerapatelmd/secretary
 Suggests: 
     roxygen2
 Encoding: UTF-8
